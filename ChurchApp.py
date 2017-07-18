@@ -7,50 +7,88 @@ also it sums up the total remittances for a particular span of time and prints i
 
 it puts the whole details in a printable format
 
-
-
 '''
 
-# OFFERINGS AND TIHES SETTLERS
-# OFFERINGS
 # Denomination
+def denom(value):
+    if value is int:
+        return True
+    else:
+        return False
 
-five = input('₦5: ')
-ten = input('₦10: ')
+while True:
+    try:
+        five =int(input('₦5: '))
 
-twenty = input('₦20: ')
-fifty = input('₦50: ')
-one_hundred = input('₦100: ')
-two_hundred = input('₦200: ')
-five_hundred = input('₦500: ')
-one_thousand = input('₦1000: ')
+    except ValueError:
+        print('Invalid input. Please try again')
+    else:
+        break
+while True:
+    try:
+        ten = int(input('₦10: '))
+    except ValueError:
+        print('Invalid input. Please try agsin')
+    else:
+        break
+while True:
+    try:
+        twenty = int(input('₦20: '))
+    except ValueError:
+        print('Invalid input. Please try agsin')
+    else:
+        break
 
-int_five = int(five)
-int_ten = int(ten)
-int_twenty = int(twenty)
-int_fifty = int(fifty)
-int_one_hundred = int(one_hundred)
-int_two_hundred = int(two_hundred)
-int_five_hundred = int(five_hundred)
-int_one_thousand = int(one_thousand)
+while True:
+    try:
+        fifty = int(input('₦50: '))
+    except ValueError:
+        print('Invalid input. Please try agsin')
+    else:
+        break
+while True:
+    try:
+        one_hundred = int(input('₦100: '))
+    except ValueError:
+        print('Invalid input. Please try agsin')
+    else:
+        break
+while True:
+    try:
+        two_hundred = int(input('₦200: '))
+    except ValueError:
+        print('Invalid input. Please try agsin')
+    else:
+        break
+while True:
+        try:
+            five_hundred = int(input('₦500: '))
+        except ValueError:
+            print('Invalid input. Please try agsin')
+        else:
+            break
+while True:
+    try:
+        one_thousand = int(input('₦1000: '))
+    except ValueError:
+        print('Invalid input. Please try agsin')
+    else:
+        break
 
-amount_five = 5 * int_five
-amout_ten = 10 * int_ten
-amount_twenty = 20 * int_twenty
-amount_fifty = 50 * int_fifty
-amount_one_hundred = 100 * int_one_hundred
-amount_two_hundred = 200 * int_two_hundred
-amount_five_hundred = 500 * int_five_hundred
-amount_one_thousand = 1000 * int_one_thousand
+amount_five = 5 * five
+amout_ten = 10 * ten
+amount_twenty = 20 * twenty
+amount_fifty = 50 * fifty
+amount_one_hundred = 100 * one_hundred
+amount_two_hundred = 200 * two_hundred
+amount_five_hundred = 500 * five_hundred
+amount_one_thousand = 1000 * one_thousand
 
 total = amount_five + amout_ten + amount_twenty + amount_fifty + amount_one_hundred + amount_two_hundred + amount_five_hundred + amount_one_thousand
 
-offering_remitance = 0.1 * total
-remitance = round(offering_remitance, 3)
-remitance_int = int(remitance)
-remitance_str = str(remitance_int)
-
-str_total = str(total)
+from decimal import Decimal as D
+offering_remitance = D(0.1 * total)
+remitance = D(round(offering_remitance, 2))
 
 months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November',
           'December']
@@ -116,6 +154,5 @@ month_name = months[month_number - 1]
 ordinal = day + endings[day_number - 1]
 
 print(day_name + ", " + month_name + ' ' + ordinal + ',', year)
-print('The total offering/Tithe/FirstFruit/CRM/TG for today is ₦' + str_total)
-print('Remitance for today is ₦' + remitance_str)
-
+print('The total offering/Tithe/FirstFruit/CRM/TG for today is ₦', total)
+print('Remitance for today is ₦', remitance)
