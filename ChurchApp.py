@@ -10,6 +10,74 @@ it puts the whole details in a printable format
 '''
 
 # Denomination
+months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November',
+          'December']
+day_of_week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
+endings = ['st', 'nd', 'rd'] + ['th'] * 17 + ['st', 'nd', 'rd'] + ['th'] * 7 + ['st']
+
+
+def date(number, date_type):
+    if date_type == 'month':
+        if number >= 1 and number <= 12:
+            return True
+    elif date_type == 'day':
+        if number >= 1 and number <= 31:
+            return True
+    elif date_type == 'year':
+        if number >= 2009 and number <= 2017:
+            return True
+    elif date_type == 'dw':
+        if number >= 1 and number <= 7:
+            return True
+    else:
+        return False
+
+
+while True:
+    year = int(input('Year: '))
+    year_int = int(year)
+    if date(year_int, 'year') is True:
+        break
+    else:
+        print('Wrong input. Try again')
+
+while True:
+    month = input('Month(1-12): ')
+    month_int = int(month)
+    if date(month_int, 'month') is True:
+        break
+    else:
+        print('Wrong input. Try again')
+
+while True:
+    day = input('Day(1-31): ')
+    day_int = int(day)
+    if date(day_int, 'day') is True:
+        break
+    else:
+        print('Wrong input. Try again')
+while True:
+    dw = input('DOW(1-7): ')
+    dw_int = int(dw)
+    if date(dw_int, 'dw') is True:
+        break
+    else:
+        print('Wrong input. Try again')
+
+month_number = int(month)
+day_number = int(day)
+day_of_week_no = int(dw)
+
+day_name = day_of_week[day_of_week_no - 1]
+month_name = months[month_number - 1]
+ordinal = day + endings[day_number - 1]
+
+
+
+
+
+
 def denom(value):
     if value is int:
         return True
@@ -87,72 +155,56 @@ amount_one_thousand = 1000 * one_thousand
 total = amount_five + amout_ten + amount_twenty + amount_fifty + amount_one_hundred + amount_two_hundred + amount_five_hundred + amount_one_thousand
 
 from decimal import Decimal as D
-offering_remitance = D(0.1 * total)
-remitance = D(round(offering_remitance, 2))
-
-months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November',
-          'December']
-day_of_week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-
-endings = ['st', 'nd', 'rd'] + ['th'] * 17 + ['st', 'nd', 'rd'] + ['th'] * 7 + ['st']
-
-
-def date(number, date_type):
-    if date_type == 'month':
-        if number >= 1 and number <= 12:
-            return True
-    elif date_type == 'day':
-        if number >= 1 and number <= 7:
-            return True
-    elif date_type == 'year':
-        if number >= 2009 and number <= 2017:
-            return True
-    elif date_type == 'dw':
-        if number >= 1 and number <= 7:
-            return True
-    else:
-        return False
-
-
 while True:
-    year = int(input('Year: '))
-    year_int = int(year)
-    if date(year_int, 'year') is True:
+    monetary = input(
+        "What monetary is this? Minister's Tithe(mt), Member's Tithe(t),Thanksgiving(tg),\n SeedLoveOffering(slo)"
+        "CRM(crm), Gospel Fund(gf), FirstFrruit(ff)")
+    if monetary == 'mt':
+        offering_remitance = D(0.775 * total)
+        remitance = D(round(offering_remitance, 2))
+        print("The total Minister's Tithe for today is ₦", total)
+        print("Minister's Tithe remitance for today is ₦", remitance)
+        break
+
+    elif monetary == 't':
+        offering_remitance = D(0.7 * total)
+        remitance = D(round(offering_remitance, 2))
+        print("The total Member's Tithe for today is ₦", total)
+        print("Member's Tithe remitance for today is ₦", remitance)
+        break
+    elif monetary == "tg":
+        offering_remitance = D(0.7 * total)
+        remitance = D(round(offering_remitance, 2))
+
+        print("The total Thanksgiving for today is ₦", total)
+        print("Thanksgiving remitance for today is ₦", remitance)
+    elif monetary == 'slo':
+        offering_remitance = D(0.3 * total)
+        remitance = D(round(offering_remitance, 2))
+        print("The total SLO for today is ₦", total)
+        print("SLO remitance for today is ₦", remitance)
+        break
+    elif monetary == 'crm':
+        offering_remitance = D(0.5 * total)
+        remitance = D(round(offering_remitance, 2))
+        print("The total CRM for today is ₦", total)
+        print("CRM remitance for today is ₦", remitance)
+        break
+    elif monetary == 'gf':
+        offering_remitance = D(0.25 * total)
+        remitance = D(round(offering_remitance, 2))
+        print("The Gospel Fund for today is ₦", total)
+        print("Gospel Fund remitance for today is ₦", remitance)
+        break
+    elif monetary == 'ff':
+        offering_remitance = D(0.1 * total)
+        remitance = D(round(offering_remitance, 2))
+        print("The total First Fruuit for today is ₦", total)
+        print("First Fruit remitance for today is ₦", remitance)
         break
     else:
-        print('Wrong input. Try again')
+        print("Invalid input. Please try again")
+        continue
 
-while True:
-    month = input('Month(1-12): ')
-    month_int = int(month)
-    if date(month_int, 'month') is True:
-        break
-    else:
-        print('Wrong input. Try again')
-
-while True:
-    day = input('Day(1-31): ')
-    day_int = int(day)
-    if date(day_int, 'day') is True:
-        break
-    else:
-        print('Wrong input. Try again')
-while True:
-    dw = input('DOW(1-7): ')
-    dw_int = int(dw)
-    if date(dw_int, 'dw') is True:
-        break
-    else:
-        print('Wrong input. Try again')
-
-month_number = int(month)
-day_number = int(day)
-day_of_week_no = int(dw)
-
-day_name = day_of_week[day_of_week_no - 1]
-month_name = months[month_number - 1]
-ordinal = day + endings[day_number - 1]
 
 print(day_name + ", " + month_name + ' ' + ordinal + ',', year)
-print('The total offering/Tithe/FirstFruit/CRM/TG for today is ₦', total)
-print('Remitance for today is ₦', remitance)
